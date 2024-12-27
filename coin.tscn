@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwrkpwsd4q2jk"]
+
+[ext_resource type="Texture2D" uid="uid://ydbe1tyhvygu" path="res://Sprites/Objects/tile_0151.png" id="1_acp7t"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_na772"]
+radius = 6.0
+
+[node name="coin" type="Area2D"]
+
+[node name="sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_acp7t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_na772")

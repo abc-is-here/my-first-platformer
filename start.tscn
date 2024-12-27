@@ -1,0 +1,86 @@
+[gd_scene load_steps=9 format=3 uid="uid://d0mflna7crawa"]
+
+[ext_resource type="Script" path="res://start.gd" id="1_ix21c"]
+[ext_resource type="AudioStream" uid="uid://bl0svpdhj2txf" path="res://Sprites/backgrounds/015922_whispers-39schizophrenic39-or-ghost-like-voices-56253.mp3" id="2_38h8e"]
+[ext_resource type="Texture2D" uid="uid://cp050pupns5wh" path="res://Sprites/backgrounds/bg.jpg" id="2_ol7pr"]
+[ext_resource type="Texture2D" uid="uid://qhlwiumsltae" path="res://Sprites/backgrounds/ghost.png" id="3_2kmio"]
+[ext_resource type="FontFile" uid="uid://y4qglav2yodp" path="res://Sprites/backgrounds/Creepster-Regular.ttf" id="3_yp3ct"]
+[ext_resource type="PackedScene" uid="uid://tq8v4rjji0s" path="res://bgm.tscn" id="4_j126c"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7s1x2"]
+bg_color = Color(0.836129, 0.183058, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dgc2l"]
+bg_color = Color(0.205738, 0.163838, 0.0634602, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+expand_margin_left = 50.0
+
+[node name="start" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ix21c")
+
+[node name="whisper" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_38h8e")
+
+[node name="Bg" type="Sprite2D" parent="."]
+position = Vector2(340, 168)
+texture = ExtResource("2_ol7pr")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.772549)
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.849
+anchor_top = 0.643
+anchor_right = 0.849
+anchor_bottom = 0.643
+offset_left = -351.048
+offset_top = -35.664
+offset_right = -11.0481
+offset_bottom = 41.336
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_yp3ct")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_7s1x2")
+text = "Start Game"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -574.0
+offset_top = 254.0
+offset_right = -128.0
+offset_bottom = 316.0
+grow_horizontal = 0
+theme_override_fonts/normal_font = ExtResource("3_yp3ct")
+theme_override_font_sizes/normal_font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_dgc2l")
+text = " My first platformer!"
+
+[node name="Ghost" type="Sprite2D" parent="."]
+position = Vector2(258, 358)
+scale = Vector2(0.375451, 0.375451)
+texture = ExtResource("3_2kmio")
+
+[node name="bgm" parent="." instance=ExtResource("4_j126c")]
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

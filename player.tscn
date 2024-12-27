@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://dbtenx38bfbnd"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_ng0f6"]
+[ext_resource type="Texture2D" uid="uid://wmjgmnptj4p6" path="res://Sprites/backgrounds/cuteghost.png" id="2_udm46"]
+[ext_resource type="FontFile" uid="uid://y4qglav2yodp" path="res://Sprites/backgrounds/Creepster-Regular.ttf" id="3_a8cfi"]
+[ext_resource type="AudioStream" uid="uid://dt6bc817inv50" path="res://Sprites/backgrounds/fast-whoosh-118248.mp3" id="3_dh7xd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qtq27"]
+size = Vector2(11, 17)
+
+[sub_resource type="LabelSettings" id="LabelSettings_fo0rd"]
+font_size = 48
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
+
+[node name="player" type="CharacterBody2D" groups=["player"]]
+position = Vector2(0, -49)
+script = ExtResource("1_ng0f6")
+
+[node name="sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_udm46")
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0.5)
+shape = SubResource("RectangleShape2D_qtq27")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, 30)
+zoom = Vector2(3, 3)
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+
+[node name="whoosh" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_dh7xd")
+
+[node name="score" type="CanvasLayer" parent="."]
+
+[node name="scoreText" type="Label" parent="score"]
+offset_right = 181.0
+offset_bottom = 67.0
+theme_override_fonts/font = ExtResource("3_a8cfi")
+text = "Score: 0"
+label_settings = SubResource("LabelSettings_fo0rd")

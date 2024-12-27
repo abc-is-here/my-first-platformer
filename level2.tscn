@@ -1,0 +1,120 @@
+[gd_scene load_steps=9 format=4 uid="uid://bqotvl10vxvm6"]
+
+[ext_resource type="TileSet" uid="uid://da3x8d0ljttjo" path="res://level1.tres" id="1_elmx0"]
+[ext_resource type="PackedScene" uid="uid://dbtenx38bfbnd" path="res://player.tscn" id="2_brgiy"]
+[ext_resource type="PackedScene" uid="uid://dysqjh2t0f0va" path="res://enemy.tscn" id="3_y6y1p"]
+[ext_resource type="PackedScene" uid="uid://cfjwqib2qtjef" path="res://spike.tscn" id="4_sbjic"]
+[ext_resource type="PackedScene" uid="uid://decgp8mkenske" path="res://end_flag.tscn" id="5_37jkk"]
+[ext_resource type="PackedScene" uid="uid://bwrkpwsd4q2jk" path="res://coin.tscn" id="6_0hxep"]
+[ext_resource type="Script" path="res://coin.gd" id="7_f6bhx"]
+[ext_resource type="PackedScene" uid="uid://tq8v4rjji0s" path="res://bgm.tscn" id="8_87w87"]
+
+[node name="main" type="Node2D"]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAD+//7/AAABAAEAAAD///7/AAACAAEAAAAAAP7/AAADAAEAAAADAP//AAABAAEAAAAEAP//AAACAAEAAAAFAP//AAADAAEAAAAHAP7/AAABAAEAAAAIAP7/AAACAAEAAAAJAP7/AAADAAEAAAALAP//AAAIAAIAAAAMAP//AAAJAAIAAAANAP//AAAIAAIAAAAOAP//AAAJAAIAAAAPAP//AAAKAAIAAAASAP//AAAIAAIAAAATAP//AAAJAAIAAAAUAP//AAAKAAIAAAAWAP7/AAABAAQAAAAXAP7/AAACAAQAAAAYAP7/AAADAAQAAAAaAP7/AAABAAQAAAAbAP7/AAACAAQAAAAcAP7/AAADAAQAAAAeAP//AAABAAQAAAAfAP//AAACAAQAAAAgAP//AAADAAQAAAAiAP3/AAABAAUAAAAiAP7/AAABAAYAAAAiAP//AAABAAcAAAAkAP3/AAADAAUAAAAkAP7/AAADAAYAAAAkAP//AAADAAcAAAAlAPv/AAABAAQAAAAmAPv/AAACAAQAAAAnAPv/AAADAAQAAAApAPr/AAABAAUAAAApAPv/AAABAAYAAAApAPz/AAABAAcAAAAqAPr/AAACAAUAAAAqAPv/AAACAAYAAAAqAPz/AAACAAcAAAArAPr/AAADAAUAAAArAPv/AAADAAYAAAArAPz/AAADAAcAAAA=")
+tile_set = ExtResource("1_elmx0")
+
+[node name="player" parent="." instance=ExtResource("2_brgiy")]
+position = Vector2(0, -64)
+
+[node name="spike" parent="." instance=ExtResource("4_sbjic")]
+position = Vector2(92, -25)
+
+[node name="spike2" parent="." instance=ExtResource("4_sbjic")]
+position = Vector2(170, -43)
+
+[node name="spike3" parent="." instance=ExtResource("4_sbjic")]
+position = Vector2(235, -25)
+
+[node name="spike4" parent="." instance=ExtResource("4_sbjic")]
+position = Vector2(334, -25)
+
+[node name="spike5" parent="." instance=ExtResource("4_sbjic")]
+position = Vector2(423, -43)
+
+[node name="spike6" parent="." instance=ExtResource("4_sbjic")]
+position = Vector2(495, -43)
+
+[node name="spike7" parent="." instance=ExtResource("4_sbjic")]
+position = Vector2(548, -25)
+
+[node name="spike8" parent="." instance=ExtResource("4_sbjic")]
+position = Vector2(686, -97)
+
+[node name="endFlag" parent="." instance=ExtResource("5_37jkk")]
+position = Vector2(786, -115)
+next_scene = "res://level3.tscn"
+
+[node name="coin" parent="." instance=ExtResource("6_0hxep")]
+position = Vector2(78, -42)
+script = ExtResource("7_f6bhx")
+
+[node name="coin2" parent="." instance=ExtResource("6_0hxep")]
+position = Vector2(151, -62)
+script = ExtResource("7_f6bhx")
+
+[node name="coin3" parent="." instance=ExtResource("6_0hxep")]
+position = Vector2(212, -44)
+script = ExtResource("7_f6bhx")
+
+[node name="coin4" parent="." instance=ExtResource("6_0hxep")]
+position = Vector2(364, -44)
+script = ExtResource("7_f6bhx")
+
+[node name="coin5" parent="." instance=ExtResource("6_0hxep")]
+position = Vector2(443, -61)
+script = ExtResource("7_f6bhx")
+
+[node name="coin6" parent="." instance=ExtResource("6_0hxep")]
+position = Vector2(476, -61)
+script = ExtResource("7_f6bhx")
+
+[node name="coin7" parent="." instance=ExtResource("6_0hxep")]
+position = Vector2(575, -42)
+script = ExtResource("7_f6bhx")
+
+[node name="coin8" parent="." instance=ExtResource("6_0hxep")]
+position = Vector2(658, -80)
+script = ExtResource("7_f6bhx")
+
+[node name="coin9" parent="." instance=ExtResource("6_0hxep")]
+position = Vector2(706, -116)
+script = ExtResource("7_f6bhx")
+
+[node name="enemy" parent="." instance=ExtResource("3_y6y1p")]
+position = Vector2(130, -47)
+move_direction = Vector2(50, 0)
+
+[node name="enemy2" parent="." instance=ExtResource("3_y6y1p")]
+position = Vector2(62, -29)
+move_direction = Vector2(50, 0)
+
+[node name="enemy3" parent="." instance=ExtResource("3_y6y1p")]
+position = Vector2(255, -29)
+move_direction = Vector2(30, 0)
+
+[node name="enemy4" parent="." instance=ExtResource("3_y6y1p")]
+position = Vector2(372, -49)
+move_direction = Vector2(0, 50)
+
+[node name="enemy5" parent="." instance=ExtResource("3_y6y1p")]
+position = Vector2(639, -55)
+move_direction = Vector2(0, 50)
+
+[node name="bgm" parent="." instance=ExtResource("8_87w87")]
+
+[connection signal="body_entered" from="coin" to="coin" method="_on_body_entered"]
+[connection signal="body_entered" from="coin2" to="coin2" method="_on_body_entered"]
+[connection signal="body_entered" from="coin3" to="coin3" method="_on_body_entered"]
+[connection signal="body_entered" from="coin4" to="coin4" method="_on_body_entered"]
+[connection signal="body_entered" from="coin5" to="coin5" method="_on_body_entered"]
+[connection signal="body_entered" from="coin6" to="coin6" method="_on_body_entered"]
+[connection signal="body_entered" from="coin7" to="coin7" method="_on_body_entered"]
+[connection signal="body_entered" from="coin8" to="coin8" method="_on_body_entered"]
+[connection signal="body_entered" from="coin9" to="coin9" method="_on_body_entered"]
+[connection signal="body_entered" from="enemy" to="enemy" method="_on_body_entered"]
+[connection signal="body_entered" from="enemy2" to="enemy2" method="_on_body_entered"]
+[connection signal="body_entered" from="enemy3" to="enemy3" method="_on_body_entered"]
+[connection signal="body_entered" from="enemy4" to="enemy4" method="_on_body_entered"]
+[connection signal="body_entered" from="enemy5" to="enemy5" method="_on_body_entered"]

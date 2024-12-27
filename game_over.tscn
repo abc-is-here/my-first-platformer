@@ -1,0 +1,68 @@
+[gd_scene load_steps=8 format=3 uid="uid://b0j75u5dwt05f"]
+
+[ext_resource type="Script" path="res://game_over.gd" id="1_ftalq"]
+[ext_resource type="AudioStream" uid="uid://dnnn7tgx63aqt" path="res://Sprites/backgrounds/classic-ghost-sound-95773.mp3" id="2_jqgh8"]
+[ext_resource type="Texture2D" uid="uid://cp050pupns5wh" path="res://Sprites/backgrounds/bg.jpg" id="2_m4my2"]
+[ext_resource type="FontFile" uid="uid://y4qglav2yodp" path="res://Sprites/backgrounds/Creepster-Regular.ttf" id="3_1b16t"]
+[ext_resource type="Texture2D" uid="uid://clvbnamabs6ng" path="res://Sprites/backgrounds/ghost2.png" id="3_2wvqi"]
+[ext_resource type="PackedScene" uid="uid://tq8v4rjji0s" path="res://bgm.tscn" id="4_j6prj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_edjxt"]
+bg_color = Color(0.727403, 0.0773589, 1.92523e-07, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+expand_margin_left = 50.0
+
+[node name="game_over" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ftalq")
+
+[node name="ghostSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_jqgh8")
+
+[node name="Bg" type="Sprite2D" parent="."]
+position = Vector2(340, 168)
+texture = ExtResource("2_m4my2")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.772549)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -1059.0
+offset_top = 293.0
+offset_right = -555.0
+offset_bottom = 377.0
+grow_horizontal = 0
+theme_override_fonts/normal_font = ExtResource("3_1b16t")
+theme_override_font_sizes/normal_font_size = 70
+theme_override_styles/normal = SubResource("StyleBoxFlat_edjxt")
+text = "    OOPSIES............."
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.083
+autostart = true
+
+[node name="Ghost2" type="Sprite2D" parent="."]
+position = Vector2(788, 339)
+texture = ExtResource("3_2wvqi")
+
+[node name="bgm" parent="." instance=ExtResource("4_j6prj")]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

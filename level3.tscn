@@ -1,0 +1,94 @@
+[gd_scene load_steps=11 format=4 uid="uid://bga4lrkfrutix"]
+
+[ext_resource type="TileSet" uid="uid://da3x8d0ljttjo" path="res://level1.tres" id="1_c8v1b"]
+[ext_resource type="PackedScene" uid="uid://dbtenx38bfbnd" path="res://player.tscn" id="2_y5eca"]
+[ext_resource type="PackedScene" uid="uid://cfjwqib2qtjef" path="res://spike.tscn" id="3_pxlie"]
+[ext_resource type="PackedScene" uid="uid://decgp8mkenske" path="res://end_flag.tscn" id="4_tavn7"]
+[ext_resource type="PackedScene" uid="uid://bwrkpwsd4q2jk" path="res://coin.tscn" id="5_7i4ru"]
+[ext_resource type="Script" path="res://coin.gd" id="6_3hu6u"]
+[ext_resource type="PackedScene" uid="uid://dysqjh2t0f0va" path="res://enemy.tscn" id="7_h6h78"]
+[ext_resource type="Script" path="res://water.gd" id="8_wci0r"]
+[ext_resource type="PackedScene" uid="uid://tq8v4rjji0s" path="res://bgm.tscn" id="9_dgdx3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0o74i"]
+size = Vector2(72, 20)
+
+[node name="main" type="Node2D"]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+position = Vector2(0, 2)
+tile_map_data = PackedByteArray("AAD///7/AAAMAAYAAAAAAP7/AAANAAYAAAABAP7/AAAOAAYAAAACAP7/AAAMAAYAAAADAP7/AAANAAYAAAAEAP7/AAAOAAYAAAAFAP7/AAAOAAQAAAAFAP//AAAPAAQAAAAFAAAAAAAPAAUAAAAFAAEAAAAPAAYAAAAFAAIAAAAOAAEAAAAFAAMAAAAOAAIAAAAFAAQAAAAOAAMAAAAGAAUAAAANAAIAAAAGAAYAAAANAAMAAAAHAAUAAAANAAIAAAAHAAYAAAANAAMAAAAIAAUAAAANAAIAAAAIAAYAAAANAAMAAAAJAAUAAAANAAIAAAAJAAYAAAANAAMAAAAFAAUAAAAOAAEAAAAFAAYAAAAOAAIAAAAKAAUAAAABAAEAAAACAAUAAAABAAEAAAADAAUAAAACAAEAAAAEAAUAAAADAAEAAAD//wUAAAABAAEAAAAAAAUAAAACAAEAAAABAAUAAAADAAEAAAD//wYAAAABAAYAAAAAAAYAAAACAAYAAAABAAYAAAADAAYAAAACAAYAAAABAAYAAAADAAYAAAACAAYAAAAEAAYAAAADAAYAAAAKAAYAAAABAAYAAAACAAcAAAABAAYAAAADAAcAAAACAAYAAAAEAAcAAAADAAYAAAD//wcAAAABAAYAAAAAAAcAAAACAAYAAAABAAcAAAADAAYAAAAKAAcAAAABAAYAAAAHAAcAAAABAAYAAAAIAAcAAAACAAYAAAAJAAcAAAADAAYAAAAFAAcAAAACAAYAAAAGAAcAAAACAAYAAAANAAQAAAAIAAIAAAAOAAQAAAAJAAIAAAAPAAQAAAAKAAIAAAARAAQAAAAIAAIAAAASAAQAAAAJAAIAAAATAAQAAAAKAAIAAAAXAAQAAAAIAAIAAAAYAAQAAAAJAAIAAAAZAAQAAAAKAAIAAAAbAAIAAAAIAAIAAAAcAAIAAAAJAAIAAAAdAAIAAAAKAAIAAAAlAAQAAAAMAAYAAAAmAAQAAAANAAYAAAAnAAQAAAAOAAYAAAAoAAQAAAAOAAUAAAAoAAEAAAAPAAQAAAAoAAIAAAAPAAUAAAAoAAMAAAAPAAYAAAAgAAQAAAAIAAIAAAAhAAQAAAAJAAIAAAAiAAQAAAAKAAIAAAAmAAIAAAALAAIAAAAmAAMAAAALAAMAAAA=")
+tile_set = ExtResource("1_c8v1b")
+
+[node name="player" parent="." instance=ExtResource("2_y5eca")]
+position = Vector2(0, -64)
+
+[node name="spike" parent="." instance=ExtResource("3_pxlie")]
+position = Vector2(43, -40)
+
+[node name="spike2" parent="." instance=ExtResource("3_pxlie")]
+position = Vector2(97, -39)
+
+[node name="spike3" parent="." instance=ExtResource("3_pxlie")]
+position = Vector2(257, 67)
+
+[node name="spike4" parent="." instance=ExtResource("3_pxlie")]
+position = Vector2(334, 67)
+
+[node name="spike5" parent="." instance=ExtResource("3_pxlie")]
+position = Vector2(426, 67)
+
+[node name="spike6" parent="." instance=ExtResource("3_pxlie")]
+position = Vector2(505, 31)
+
+[node name="spike7" parent="." instance=ExtResource("3_pxlie")]
+position = Vector2(620, 67)
+
+[node name="endFlag" parent="." instance=ExtResource("4_tavn7")]
+position = Vector2(735, 12)
+
+[node name="coin" parent="." instance=ExtResource("5_7i4ru")]
+position = Vector2(78, -42)
+script = ExtResource("6_3hu6u")
+
+[node name="enemy" parent="." instance=ExtResource("7_h6h78")]
+position = Vector2(-14, 75)
+move_direction = Vector2(200, 0)
+
+[node name="enemy2" parent="." instance=ExtResource("7_h6h78")]
+position = Vector2(243, 61)
+move_direction = Vector2(50, 0)
+
+[node name="enemy3" parent="." instance=ExtResource("7_h6h78")]
+position = Vector2(350, 61)
+move_direction = Vector2(90, 0)
+
+[node name="enemy4" parent="." instance=ExtResource("7_h6h78")]
+position = Vector2(460, 61)
+move_direction = Vector2(0, 50)
+
+[node name="enemy5" parent="." instance=ExtResource("7_h6h78")]
+position = Vector2(535, 26)
+move_direction = Vector2(60, 50)
+
+[node name="enemy6" parent="." instance=ExtResource("7_h6h78")]
+position = Vector2(694, 52)
+move_direction = Vector2(0, 20)
+
+[node name="water" type="Area2D" parent="."]
+script = ExtResource("8_wci0r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="water"]
+position = Vector2(144, 101)
+shape = SubResource("RectangleShape2D_0o74i")
+
+[node name="bgm" parent="." instance=ExtResource("9_dgdx3")]
+
+[connection signal="body_entered" from="coin" to="coin" method="_on_body_entered"]
+[connection signal="body_entered" from="enemy" to="enemy" method="_on_body_entered"]
+[connection signal="body_entered" from="enemy2" to="enemy2" method="_on_body_entered"]
+[connection signal="body_entered" from="enemy3" to="enemy3" method="_on_body_entered"]
+[connection signal="body_entered" from="enemy4" to="enemy4" method="_on_body_entered"]
+[connection signal="body_entered" from="enemy5" to="enemy5" method="_on_body_entered"]
+[connection signal="body_entered" from="enemy6" to="enemy6" method="_on_body_entered"]
+[connection signal="body_entered" from="water" to="water" method="_on_body_entered"]
